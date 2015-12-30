@@ -1,0 +1,24 @@
+{
+    "name": "spa-dom",
+    "version": "1.3.0",
+    "description": "HTML elements low-level handling.",
+    "author": {
+        "name": "Stanislav Kalashnik",
+        "email": "darkpark.main@gmail.com"
+    },
+    "repository": "spasdk/dom",
+    "scripts": {
+        "lint": "eslint *.js",
+        "jsdoc": "jsdoc --destination doc *.js readme.md"
+    },
+    "dependencies": {
+        "cjs-emitter": "1.*.*"
+    },
+    "keywords": [
+        "spa",
+        "spasdk",
+        "framework",
+        "dom"
+    ],
+    "license": "GPL-3.0"
+}
