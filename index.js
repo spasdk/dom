@@ -2,7 +2,7 @@
  * HTML elements low-level handling.
  *
  * @module stb/dom
- * @author Stanislav Kalashnik <sk@infomir.eu>
+ * @author Stanislav Kalashnik <darkpark.main@gmail.com>
  * @license GNU GENERAL PUBLIC LICENSE Version 3
  */
 
