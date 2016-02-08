@@ -167,5 +167,12 @@ dom.remove = function ( nodes ) {
 };
 
 
+dom.clear = function ( node ) {
+    while ( node.lastChild ) {
+        node.removeChild(node.lastChild);
+    }
+};
+
+
 // public
 module.exports = dom;
