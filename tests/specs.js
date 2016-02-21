@@ -3,9 +3,11 @@
  * @license GNU GENERAL PUBLIC LICENSE Version 3
  */
 
-'use strict';
+/* eslint-disable */
+/* eslint-env mocha */
+// todo: rework to mocha tests
 
-/* jshint undef:false */
+'use strict';
 
 // dependencies
 var dom = require('dom');

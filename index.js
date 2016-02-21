@@ -32,7 +32,7 @@ var dom = {};
  */
 dom.tag = function ( tagName, attrList, content ) {
     var node = null,
-        i, name;
+        index, name;
 
     // minimal param is given
     if ( tagName ) {
@@ -48,14 +48,14 @@ dom.tag = function ( tagName, attrList, content ) {
         }
 
         // content (arguments except the first two)
-        for ( i = 2; i < arguments.length; i++ ) {
+        for ( index = 2; index < arguments.length; index++ ) {
             // some data is given
-            if ( arguments[i] ) {
+            if ( arguments[index] ) {
                 // regular HTML tag or plain data
                 node.appendChild(
-                    typeof arguments[i] === 'object' ?
-                    arguments[i] :
-                    document.createTextNode(arguments[i])
+                    typeof arguments[index] === 'object' ?
+                    arguments[index] :
+                    document.createTextNode(arguments[index])
                 );
             }
         }
@@ -82,11 +82,12 @@ dom.tag = function ( tagName, attrList, content ) {
  */
 dom.fragment = function ( node ) {
     // prepare placeholder
-    var i, fragment = document.createDocumentFragment();
+    var fragment = document.createDocumentFragment(),
+        index;
 
     // walk through all the given elements
-    for ( i = 0; i < arguments.length; i++ ) {
-        node = arguments[i];
+    for ( index = 0; index < arguments.length; index++ ) {
+        node = arguments[index];
         // some data is given
         if ( node ) {
             // regular HTML tag or plain data
@@ -116,19 +117,19 @@ dom.fragment = function ( node ) {
  * add(some_div, div1, 'hello', 'world');
  */
 dom.add = function ( tagDst, content ) {
-    var i;
+    var index;
 
     // valid HTML tag as the destination
     if ( tagDst instanceof Node ) {
         // append all except the first one
-        for ( i = 1; i < arguments.length; i++ ) {
+        for ( index = 1; index < arguments.length; index++ ) {
             // some data is given
-            if ( arguments[i] ) {
+            if ( arguments[index] ) {
                 // regular HTML tag or plain data
                 tagDst.appendChild(
-                    typeof arguments[i] === 'object' ?
-                    arguments[i] :
-                    document.createTextNode(arguments[i])
+                    typeof arguments[index] === 'object' ?
+                    arguments[index] :
+                    document.createTextNode(arguments[index])
                 );
             }
         }
@@ -151,13 +152,13 @@ dom.add = function ( tagDst, content ) {
  */
 dom.remove = function ( nodes ) {
     var count = 0,  // amount of successfully removed nodes
-        i;
+        index;
 
     // walk through all the given elements
-    for ( i = 0; i < arguments.length; i++ ) {
+    for ( index = 0; index < arguments.length; index++ ) {
         // valid non-empty tag
-        if ( arguments[i] && arguments[i].parentNode ) {
-            if ( arguments[i].parentNode.removeChild(arguments[i]) === arguments[i] ) {
+        if ( arguments[index] && arguments[index].parentNode ) {
+            if ( arguments[index].parentNode.removeChild(arguments[index]) === arguments[index] ) {
                 count++;
             }
         }
