@@ -12,7 +12,7 @@
         "jsdoc": "jsdoc --destination doc *.js readme.md"
     },
     "dependencies": {
-        "cjs-emitter": "1.*.*"
+        "cjs-emitter": "cjssdk/emitter"
     },
     "keywords": [
         "spa",
