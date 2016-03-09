@@ -14,6 +14,9 @@
     "dependencies": {
         "cjs-emitter": "cjssdk/emitter"
     },
+    "devDependencies": {
+        "spa-eslint-config": "spasdk/eslint-config"
+    },
     "keywords": [
         "spa",
         "spasdk",
