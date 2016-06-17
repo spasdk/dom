@@ -20,7 +20,7 @@
     "devDependencies": {
         "spa-eslint-config": "spasdk/eslint-config",
         "mocha": "2.*.*",
-        "should": "8.*.*"
+        "should": "9.*.*"
     },
     "keywords": [
         "spa",
