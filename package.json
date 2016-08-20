@@ -19,8 +19,8 @@
     },
     "devDependencies": {
         "spa-eslint-config": "spasdk/eslint-config",
-        "mocha": "2.*.*",
-        "should": "9.*.*"
+        "mocha": "3.*.*",
+        "should": "11.*.*"
     },
     "keywords": [
         "spa",
