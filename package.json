@@ -11,16 +11,19 @@
         "url": "https://github.com/spasdk/dom.git"
     },
     "scripts": {
-        "lint": "eslint *.js",
+        "lint": "eslint .",
+        "mocha": "node ./tests/main.js",
+        "test": "npm run lint",
         "jsdoc": "jsdoc --destination doc *.js readme.md"
     },
     "dependencies": {
         "cjs-emitter": "cjssdk/emitter"
     },
     "devDependencies": {
-        "spa-eslint-config": "spasdk/eslint-config",
+        "eslint": "2.*.*",
         "mocha": "3.*.*",
-        "should": "11.*.*"
+        "should": "11.*.*",
+        "spa-eslint-config": "spasdk/eslint-config"
     },
     "keywords": [
         "spa",

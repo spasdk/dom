@@ -132,6 +132,7 @@ dom.add = function ( tagDst, content ) {
                 );
             }
         }
+
         return tagDst;
     }
 
