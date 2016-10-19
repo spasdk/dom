@@ -23,7 +23,7 @@
         "eslint": "3.*.*",
         "mocha": "3.*.*",
         "should": "11.*.*",
-        "spa-eslint-config": "spasdk/eslint-config"
+        "spa-eslint-config": "1.*.*"
     },
     "keywords": [
         "spa",
