@@ -20,7 +20,7 @@
         "cjs-emitter": "1.*.*"
     },
     "devDependencies": {
-        "eslint": "3.*.*",
+        "eslint": "4.*.*",
         "mocha": "3.*.*",
         "should": "11.*.*",
         "spa-eslint-config": "1.*.*"
