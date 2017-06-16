@@ -52,9 +52,7 @@ dom.tag = function ( tagName, attrList, content ) {
             if ( arguments[index] ) {
                 // regular HTML tag or plain data
                 node.appendChild(
-                    typeof arguments[index] === 'object' ?
-                    arguments[index] :
-                    document.createTextNode(arguments[index])
+                    typeof arguments[index] === 'object' ? arguments[index] : document.createTextNode(arguments[index])
                 );
             }
         }
@@ -126,9 +124,7 @@ dom.add = function ( tagDst, content ) {
             if ( arguments[index] ) {
                 // regular HTML tag or plain data
                 tagDst.appendChild(
-                    typeof arguments[index] === 'object' ?
-                    arguments[index] :
-                    document.createTextNode(arguments[index])
+                    typeof arguments[index] === 'object' ? arguments[index] : document.createTextNode(arguments[index])
                 );
             }
         }
