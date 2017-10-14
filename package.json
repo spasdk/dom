@@ -21,8 +21,8 @@
     },
     "devDependencies": {
         "eslint": "4.*.*",
-        "mocha": "3.*.*",
-        "should": "11.*.*",
+        "mocha": "4.*.*",
+        "should": "13.*.*",
         "spa-eslint-config": "1.*.*"
     },
     "keywords": [
