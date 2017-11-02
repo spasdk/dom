@@ -21,6 +21,7 @@
     },
     "devDependencies": {
         "eslint": "4.*.*",
+        "jsdoc": "3.*.*",
         "mocha": "4.*.*",
         "should": "13.*.*",
         "spa-eslint-config": "1.*.*"
