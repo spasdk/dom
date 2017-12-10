@@ -16,9 +16,7 @@
         "test": "npm run lint",
         "jsdoc": "jsdoc --destination docs *.js readme.md"
     },
-    "dependencies": {
-        "cjs-emitter": "1.*.*"
-    },
+    "dependencies": {},
     "devDependencies": {
         "eslint": "4.*.*",
         "jsdoc": "3.*.*",
