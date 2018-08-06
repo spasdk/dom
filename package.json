@@ -18,11 +18,10 @@
     },
     "dependencies": {},
     "devDependencies": {
-        "eslint": "4.*.*",
-        "jsdoc": "3.*.*",
+        "jsdoc": "^3.5.5",
         "mocha": "4.*.*",
         "should": "13.*.*",
-        "spa-eslint-config": "1.*.*"
+        "spa-eslint": "^1.0.0"
     },
     "keywords": [
         "spa",
