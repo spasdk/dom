@@ -16,11 +16,10 @@
         "test": "npm run lint",
         "jsdoc": "jsdoc --destination docs *.js readme.md"
     },
-    "dependencies": {},
     "devDependencies": {
         "jsdoc": "^3.5.5",
-        "mocha": "4.*.*",
-        "should": "13.*.*",
+        "mocha": "^5.2.0",
+        "should": "^13.2.3",
         "spa-eslint": "^1.0.0"
     },
     "keywords": [
