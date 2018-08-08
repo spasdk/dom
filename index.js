@@ -147,7 +147,8 @@ dom.add = function ( tagDst, content ) {
  * dom.remove(div1, div2, div3);
  */
 dom.remove = function ( nodes ) {
-    var count = 0,  // amount of successfully removed nodes
+    // amount of successfully removed nodes
+    var count = 0,
         index;
 
     // walk through all the given elements
