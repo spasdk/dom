@@ -18,55 +18,54 @@ var dom = {};
 /**
  * Create a new HTML element.
  *
- * @param {string} tagName mandatory tag name
- * @param {Object|null} [attrList] element attributes
- * @param {...*} [content] element content (primitive value/values or other nodes)
- * @return {Node|null} HTML element or null on failure
+ * @param {string} tagName - mandatory tag name
+ * @param {Object|null} [attributes] - element attributes
+ * @param {...*} [content] - element content (primitive value/values or other nodes)
+ * @return {Element|null} HTML element or null on failure
  *
  * @example
  * dom.tag('table');
  * dom.tag('div', {}, 'some text');
- * dom.tag('div', {className:'top'}, dom.tag('span'), dom.tag('br'));
- * dom.tag('link', {rel:'stylesheet', type:'text/css', href:'http://some.url/'});
+ * dom.tag('div', {className: 'top'}, dom.tag('span'), dom.tag('br'));
+ * dom.tag('link', {rel: 'stylesheet', type: 'text/css', href: 'http://some.url/'});
  */
-dom.tag = function ( tagName, attrList, content ) {
-    var node = null,
-        index, name;
+dom.tag = function ( tagName, attributes, content ) {
+    var $node, index, name, argument;
 
-    // minimal param is given
-    if ( tagName ) {
-        // empty element
-        node = document.createElement(tagName);
+    console.assert(arguments.length > 0, 'wrong arguments number');
+    console.assert(typeof tagName === 'string', 'wrong tagName type');
+    console.assert(tagName.length > 0, 'empty tagName');
 
-        // optional attribute list is given
-        if ( attrList && typeof attrList === 'object' ) {
-            for ( name in attrList ) {
-                // extend a new node with the given attributes
-                node[name] = attrList[name];
-            }
+    // empty element
+    $node = document.createElement(tagName);
+
+    // optional attribute list is given
+    if ( attributes && typeof attributes === 'object' ) {
+        for ( name in attributes ) {
+            console.assert(typeof name === 'string', 'wrong attribute name type');
+            console.assert(name.length > 0, 'empty attribute name');
+
+            // extend a new node with the given attributes
+            $node[name] = attributes[name];
         }
-
-        // content (arguments except the first two)
-        for ( index = 2; index < arguments.length; index++ ) {
-            // some data is given
-            if ( arguments[index] ) {
-                // regular HTML tag or plain data
-                node.appendChild(
-                    typeof arguments[index] === 'object' ? arguments[index] : document.createTextNode(arguments[index])
-                );
-            }
-        }
-
     }
 
-    return node;
+    // content (arguments except the first two)
+    for ( index = 2; index < arguments.length; index++ ) {
+        argument = arguments[index];
+
+        // element/text node or plain data
+        $node.appendChild(argument.nodeType ? argument : document.createTextNode(argument));
+    }
+
+    return $node;
 };
 
 
 /**
  * Create a new DocumentFragment filled with the given non-empty elements if any.
  *
- * @param {...*} [node] fragment content (primitive value/values or other nodes)
+ * @param {...*} [content] - fragment content (primitive value/values or other nodes)
  * @return {DocumentFragment} new placeholder
  *
  * @example
@@ -77,85 +76,82 @@ dom.tag = function ( tagName, attrList, content ) {
  * // mixed case
  * dom.fragment('some text', 123, div3);
  */
-dom.fragment = function ( node ) {
+dom.fragment = function ( content ) {
     // prepare placeholder
-    var fragment = document.createDocumentFragment(),
-        index;
+    var $fragment = document.createDocumentFragment(),
+        index, argument;
+
+    console.assert(arguments.length > 0, 'wrong arguments number');
 
     // walk through all the given elements
     for ( index = 0; index < arguments.length; index++ ) {
-        node = arguments[index];
-        // some data is given
-        if ( node ) {
-            // regular HTML tag or plain data
-            fragment.appendChild(typeof node === 'object' ? node : document.createTextNode(node));
-        }
+        argument = arguments[index];
+
+        // element/text node or plain data
+        $fragment.appendChild(argument.nodeType ? argument : document.createTextNode(argument));
     }
 
-    return fragment;
+    return $fragment;
 };
 
 
 /**
  * Add the given non-empty data (HTML element/text or list) to the destination element.
  *
- * @param {Node} tagDst element to receive children
- * @param {...*} [content] element content (primitive value/values or other nodes)
- * @return {Node|null} the destination element - owner of all added data
+ * @param {Element} target - element to receive children
+ * @param {...*} [content] - element content (primitive value/values or other nodes)
+ * @return {Element|null} the destination element - owner of all added data
  *
  * @example
  * // simple text value
- * add(some_div, 'Hello world');
+ * dom.add(some_div, 'Hello world');
  * // single DOM Element
- * add(some_div, some_other_div);
+ * dom.add(some_div, some_other_div);
  * // DOM Element list
- * add(some_div, div1, div2, div3);
+ * dom.add(some_div, div1, div2, div3);
  * // mixed case
- * add(some_div, div1, 'hello', 'world');
+ * dom.add(some_div, div1, 'hello', 'world');
  */
-dom.add = function ( tagDst, content ) {
-    var index;
+dom.add = function ( target, content ) {
+    var index, argument;
 
-    // valid HTML tag as the destination
-    if ( tagDst instanceof Node ) {
-        // append all except the first one
-        for ( index = 1; index < arguments.length; index++ ) {
-            // some data is given
-            if ( arguments[index] ) {
-                // regular HTML tag or plain data
-                tagDst.appendChild(
-                    typeof arguments[index] === 'object' ? arguments[index] : document.createTextNode(arguments[index])
-                );
-            }
-        }
+    console.assert(arguments.length > 1, 'wrong arguments number');
+    console.assert(target instanceof Element, 'wrong target type');
 
-        return tagDst;
+    // append all except the first one
+    for ( index = 1; index < arguments.length; index++ ) {
+        argument = arguments[index];
+
+        // regular HTML tag or plain data
+        target.appendChild(argument.nodeType ? argument : document.createTextNode(argument));
     }
 
-    return null;
+    return target;
 };
 
 
 /**
- * Remove the given elements from the DOM.
+ * Remove the given nodes from the DOM.
  *
- * @param {...Node} [nodes] element to be removed
- * @return {boolean} operation status (true - all given elements removed)
+ * @param {...*} [content] - node to be removed
+ * @return {boolean} operation status (true - all given nodes removed)
  *
  * @example
  * dom.remove(document.querySelector('div.test'));
  * dom.remove(div1, div2, div3);
  */
-dom.remove = function ( nodes ) {
+dom.remove = function ( content ) {
     // amount of successfully removed nodes
     var count = 0,
-        index;
+        index, argument;
 
     // walk through all the given elements
     for ( index = 0; index < arguments.length; index++ ) {
+        argument = arguments[index];
+
         // valid non-empty tag
-        if ( arguments[index] && arguments[index].parentNode ) {
-            if ( arguments[index].parentNode.removeChild(arguments[index]) === arguments[index] ) {
+        if ( argument && argument.parentNode ) {
+            if ( argument.parentNode.removeChild(argument) === argument ) {
                 count++;
             }
         }
@@ -165,9 +161,14 @@ dom.remove = function ( nodes ) {
 };
 
 
-dom.clear = function ( node ) {
-    while ( node.lastChild ) {
-        node.removeChild(node.lastChild);
+/**
+ * Remove all element children.
+ *
+ * @param {Element} $node - element to be cleared
+ */
+dom.clear = function ( $node ) {
+    while ( $node.lastChild ) {
+        $node.removeChild($node.lastChild);
     }
 };
 
