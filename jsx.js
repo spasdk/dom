@@ -63,6 +63,14 @@ dom.tag = function ( tagName, attributes, content ) {
             for ( name in argument.links ) {
                 links[name] = argument.links[name];
             }
+        } else if ( Array.isArray(argument) ) {
+            argument.forEach(element => {
+                if ( element.$node ) {
+                    $node.appendChild(element.$node);
+                } else {
+                    $node.appendChild(document.createTextNode(element));
+                }
+            });
         } else {
             $node.appendChild(document.createTextNode(argument));
         }
