@@ -20,7 +20,7 @@
         "jsdoc": "^3.5.5",
         "mocha": "^5.2.0",
         "should": "^13.2.3",
-        "spa-eslint": "^1.0.0"
+        "spa-eslint": "^1.0.1"
     },
     "keywords": [
         "spa",
