@@ -18,7 +18,7 @@ var dom = {};
 /**
  * Create a new HTML element.
  *
- * @param {string} tag - mandatory tag name
+ * @param {string|function} tag - mandatory tag name or function to create tag
  * @param {Object|null} [attributes] - element attributes
  * @param {...*} [content] - element content (primitive value/values or other nodes)
  * @return {Object} HTML element with links
