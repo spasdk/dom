@@ -87,7 +87,7 @@ dom.tag = function ( tag, attributes, content ) {
  *
  * @return {DocumentFragment}
  */
-dom.frag = function () {
+dom.fragment = function () {
     return document.createDocumentFragment();
 };
 
