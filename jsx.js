@@ -18,21 +18,23 @@ var dom = {};
 /**
  * Create a new HTML element.
  *
- * @param {string} tagName - mandatory tag name
+ * @param {string|function} tag - mandatory tag name or function to create tag
  * @param {Object|null} [attributes] - element attributes
  * @param {...*} [content] - element content (primitive value/values or other nodes)
  * @return {Object} HTML element with links
  */
-dom.tag = function ( tagName, attributes, content ) {
+dom.tag = function ( tag, attributes, content ) {
     var links = {},
         $node, index, name, argument;
 
-    console.assert(arguments.length > 0, 'wrong arguments number');
-    console.assert(typeof tagName === 'string', 'wrong tagName type');
-    console.assert(tagName.length > 0, 'empty tagName');
+    if ( typeof tag === 'function' ) {
+        // fragment
+        $node = tag();
+    } else {
+        // empty element
+        $node = document.createElement(tag);
+    }
 
-    // empty element
-    $node = document.createElement(tagName);
 
     // optional attribute list is given
     if ( attributes && typeof attributes === 'object' ) {
@@ -77,6 +79,16 @@ dom.tag = function ( tagName, attributes, content ) {
     }
 
     return {$node: $node, links: links};
+};
+
+
+/**
+ * Create DocumentFragment element
+ *
+ * @return {DocumentFragment}
+ */
+dom.fragment = function () {
+    return document.createDocumentFragment();
 };
 
 
