@@ -69,8 +69,6 @@ dom.tag = function ( tagName, attributes, content ) {
  * @return {DocumentFragment} new placeholder
  *
  * @example
- * // gives an empty fragment element
- * dom.fragment();
  * // gives a fragment element with 3 div element inside
  * dom.fragment(dom.tag('div'), div2, div3);
  * // mixed case
