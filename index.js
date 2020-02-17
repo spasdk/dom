@@ -69,8 +69,6 @@ dom.tag = function ( tagName, attributes, content ) {
  * @return {DocumentFragment} new placeholder
  *
  * @example
- * // gives an empty fragment element
- * dom.fragment();
  * // gives a fragment element with 3 div element inside
  * dom.fragment(dom.tag('div'), div2, div3);
  * // mixed case
@@ -80,6 +78,8 @@ dom.fragment = function ( content ) {
     // prepare placeholder
     var $fragment = document.createDocumentFragment(),
         index, argument;
+
+    console.assert(arguments.length > 0, 'wrong arguments number');
 
     // walk through all the given elements
     for ( index = 0; index < arguments.length; index++ ) {
