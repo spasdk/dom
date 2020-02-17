@@ -81,8 +81,6 @@ dom.fragment = function ( content ) {
     var $fragment = document.createDocumentFragment(),
         index, argument;
 
-    console.assert(arguments.length > 0, 'wrong arguments number');
-
     // walk through all the given elements
     for ( index = 0; index < arguments.length; index++ ) {
         argument = arguments[index];
