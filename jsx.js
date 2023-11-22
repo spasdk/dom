@@ -13,6 +13,7 @@
  * DOM manipulation module
  */
 var dom = {};
+var dataAttributePrefix = 'data-';
 
 
 /**
@@ -50,7 +51,13 @@ dom.tag = function ( tag, attributes, content ) {
 
             if ( attributes[name] !== null ) {
                 // extend a new node with the given attributes
-                $node[name] = attributes[name];
+                if ( name.startsWith(dataAttributePrefix) ) {
+                    var dataAttributeName = name.slice(dataAttributePrefix.length).replace(/-./g, match => match.charAt(1).toUpperCase());
+
+                    $node.dataset[dataAttributeName] = attributes[name];
+                } else {
+                    $node[name] = attributes[name];
+                }
             }
         }
     }
